@@ -66,10 +66,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onLongClick(View view) {
                 String info;
                 info = getText(R.string.des1).toString();
-               Intent i = new Intent(MainActivity.this, OfficeDetails.class);
-               i.putExtra("key1",info);
-               startActivity(i);
-               return false;
+                Intent i = new Intent(MainActivity.this, OfficeDetails.class);
+                i.putExtra("key1", info);
+                startActivity(i);
+                return false;
             }
         });
 
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 String info;
                 info = getText(R.string.des2).toString();
                 Intent i = new Intent(MainActivity.this, OfficeDetails.class);
-                i.putExtra("key1",info);
+                i.putExtra("key1", info);
                 startActivity(i);
 
                 return false;
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 String info;
                 info = getText(R.string.des3).toString();
                 Intent i = new Intent(MainActivity.this, OfficeDetails.class);
-                i.putExtra("key1",info);
+                i.putExtra("key1", info);
                 startActivity(i);
                 return false;
             }
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 String info;
                 info = getText(R.string.des4).toString();
                 Intent i = new Intent(MainActivity.this, OfficeDetails.class);
-                i.putExtra("key1",info);
+                i.putExtra("key1", info);
                 startActivity(i);
                 return false;
             }
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.info_menu, menu);
         return true;
@@ -123,8 +123,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
+        int id = item.getItemId();
 
+        switch (id) {
             case R.id.info_menu_icon:
 
                 AlertDialog.Builder builder
@@ -134,10 +135,14 @@ public class MainActivity extends AppCompatActivity {
                 builder.setMessage("Click on the office icon to enter your info and join the line.\n Long click on the office icon to view more information.");
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
-            return true;
+                return true;
+
+            case R.id.status_menu_icon:
+                startActivity(new Intent(MainActivity.this, Line_Status.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
 
-        return super.onOptionsItemSelected(item);
     }
-
 }
